@@ -28,12 +28,12 @@ export default function UserMenu() {
       setUserInfo(user);
 
       // lấy avatar
-      setAvatarUser(getAvatarUrl(user.avatar));
 
       // gọi API lấy user từ DB
       try {
         const res = await getUserById(user.user_id);
         setUserInDbLite(res.data);
+        setAvatarUser(getAvatarUrl(res.data.avatar));
       } catch (error) {
         console.error("Get user failed", error);
       }
