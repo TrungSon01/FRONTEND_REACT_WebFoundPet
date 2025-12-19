@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 
-const SOCKET_URL = "http://localhost:8001"; // URL backend của bạn
+const SOCKET_URL = "https://backend-nestjs-webfoundpet.onrender.com"; // URL backend của bạn
 let socket = null;
 
 // Khởi tạo socket

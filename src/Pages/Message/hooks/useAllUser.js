@@ -6,7 +6,9 @@ export function useAllUsers(currentUserId) {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(`http://localhost:8001/api/user`);
+        const response = await fetch(
+          `https://backend-nestjs-webfoundpet.onrender.com/api/user`
+        );
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();

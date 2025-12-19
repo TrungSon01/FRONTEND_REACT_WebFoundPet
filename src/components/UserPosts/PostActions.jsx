@@ -10,9 +10,12 @@ export default function PostActions({ post }) {
     const updatedLikeCount = liked ? likeCount - 1 : likeCount + 1;
 
     try {
-      await axios.patch(`http://127.0.0.1:8000/api/posts/${post.post_id}/`, {
-        like_count: updatedLikeCount,
-      });
+      await axios.patch(
+        `https://backend-django-webfoundpet.onrender.com/api/posts/${post.post_id}/`,
+        {
+          like_count: updatedLikeCount,
+        }
+      );
 
       setLiked(!liked);
       setLikeCount(updatedLikeCount);

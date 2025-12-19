@@ -4,7 +4,7 @@ import { hideLoading, showLoading } from "../redux/loadingSlice";
 // axios interceptor
 
 export const https = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://backend-django-webfoundpet.onrender.com",
 });
 
 // Add a request interceptor

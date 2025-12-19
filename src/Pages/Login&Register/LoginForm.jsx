@@ -92,9 +92,12 @@ export default function LoginPage() {
 
   const handleSocialLogin = (type) => {
     const socialUrls = {
-      google: "http://localhost:8001/api/authentication/google",
-      facebook: "http://localhost:8001/api/authentication/facebook",
-      github: "http://localhost:8001/api/authentication/github",
+      google:
+        "https://backend-nestjs-webfoundpet.onrender.com/api/authentication/google",
+      facebook:
+        "https://backend-nestjs-webfoundpet.onrender.com/api/authentication/facebook",
+      github:
+        "https://backend-nestjs-webfoundpet.onrender.com/api/authentication/github",
     };
 
     if (socialUrls[type]) {

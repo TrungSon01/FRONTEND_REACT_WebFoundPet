@@ -41,7 +41,7 @@ export default function ProfileHeader({
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:8001/api/user/upload-cloud-avatar-user?user_id=${user.user_id}`,
+        `https://backend-nestjs-webfoundpet.onrender.com/api/user/upload-cloud-avatar-user?user_id=${user.user_id}`,
         {
           method: "POST",
 

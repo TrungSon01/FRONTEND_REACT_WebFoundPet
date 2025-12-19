@@ -13,23 +13,34 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/userSlice";
 import "./UserMenu.css";
 import { getAvatarUrl } from "../../common/functions/app.function";
+import { getUserById } from "../../apis/userService";
 
 export default function UserMenu() {
   const [userInfo, setUserInfo] = useState(null);
   const [avatarUser, setAvatarUser] = useState("");
-  const { user } = useSelector((state) => state.userSlice);
+  const [userInDbLite, setUserInDbLite] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const user = JSON.parse(localStorage.getItem("userAccount"));
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userAccount"));
-    const avatarUser = getAvatarUrl(user?.avatar);
-    if (user) {
+    const fetchUser = async () => {
       setUserInfo(user);
-      const avatarUser = getAvatarUrl(user?.avatar);
-      setAvatarUser(avatarUser);
-    }
-  }, [user]);
+
+      // lấy avatar
+      setAvatarUser(getAvatarUrl(user.avatar));
+
+      // gọi API lấy user từ DB
+      try {
+        const res = await getUserById(user.user_id);
+        setUserInDbLite(res.data);
+      } catch (error) {
+        console.error("Get user failed", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -100,7 +111,7 @@ export default function UserMenu() {
         </div>
       ),
     },
-    ...(user?.role === "admin"
+    ...(userInDbLite?.role === "admin"
       ? [
           {
             key: "4",
@@ -109,7 +120,7 @@ export default function UserMenu() {
                 className="dropdown-item"
                 onClick={() =>
                   (window.location.href =
-                    "http://127.0.0.1:8000/admin/login/?next=/admin/")
+                    "https://backend-django-webfoundpet.onrender.com/admin/login/?next=/admin/")
                 }
                 style={{ animationDelay: "0.2s" }}
               >
