@@ -14,7 +14,7 @@ export default defineConfig({
     ],
     proxy: {
       "/api": {
-        target: "https://backend-django-webfoundpet.onrender.com",
+        target: "http://203.145.46.211:8000",
         changeOrigin: true,
         secure: false,
       },

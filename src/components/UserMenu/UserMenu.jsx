@@ -14,6 +14,7 @@ import { logoutUser } from "../../redux/userSlice";
 import "./UserMenu.css";
 import { getAvatarUrl } from "../../common/functions/app.function";
 import { getUserById } from "../../apis/userService";
+import { BASE_URL_DJANGO } from "../../apis/config";
 
 export default function UserMenu() {
   const [userInfo, setUserInfo] = useState(null);
@@ -119,8 +120,7 @@ export default function UserMenu() {
               <div
                 className="dropdown-item"
                 onClick={() =>
-                  (window.location.href =
-                    "https://backend-django-webfoundpet.onrender.com/admin/login/?next=/admin/")
+                  (window.location.href = `${BASE_URL_DJANGO}/admin`)
                 }
                 style={{ animationDelay: "0.2s" }}
               >

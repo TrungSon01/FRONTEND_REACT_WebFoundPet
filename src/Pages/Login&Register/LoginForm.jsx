@@ -8,6 +8,7 @@ import { FaGoogle, FaFacebookF, FaInstagram, FaGithub } from "react-icons/fa";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./Login.css";
 import { loginServiceNest } from "../../apis/NestJS_api/userService";
+import { SOCIAL_URLs } from "../../apis/NestJS_api/config";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -91,14 +92,7 @@ export default function LoginPage() {
   };
 
   const handleSocialLogin = (type) => {
-    const socialUrls = {
-      google:
-        "https://backend-nestjs-webfoundpet.onrender.com/api/authentication/google",
-      facebook:
-        "https://backend-nestjs-webfoundpet.onrender.com/api/authentication/facebook",
-      github:
-        "https://backend-nestjs-webfoundpet.onrender.com/api/authentication/github",
-    };
+    const socialUrls = SOCIAL_URLs;
 
     if (socialUrls[type]) {
       window.location.href = socialUrls[type];

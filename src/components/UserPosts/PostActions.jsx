@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { BASE_URL_DJANGO } from "../../apis/config";
 
 export default function PostActions({ post }) {
   const [liked, setLiked] = useState(false);
@@ -10,12 +11,9 @@ export default function PostActions({ post }) {
     const updatedLikeCount = liked ? likeCount - 1 : likeCount + 1;
 
     try {
-      await axios.patch(
-        `https://backend-django-webfoundpet.onrender.com/api/posts/${post.post_id}/`,
-        {
-          like_count: updatedLikeCount,
-        }
-      );
+      await axios.patch(`${BASE_URL_DJANGO}/api/posts/${post.post_id}/`, {
+        like_count: updatedLikeCount,
+      });
 
       setLiked(!liked);
       setLikeCount(updatedLikeCount);

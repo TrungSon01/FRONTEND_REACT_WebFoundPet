@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BASE_URL_NEST_JS } from "../../../apis/NestJS_api/config";
 
 export function useAllUsers(currentUserId) {
   const [allUsers, setAllUsers] = useState([]);
@@ -6,9 +7,7 @@ export function useAllUsers(currentUserId) {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(
-          `https://backend-nestjs-webfoundpet.onrender.com/api/user`
-        );
+        const response = await fetch(`${BASE_URL_NEST_JS}/api/user`);
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();

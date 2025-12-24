@@ -1,6 +1,6 @@
 import io from "socket.io-client";
-
-const SOCKET_URL = "https://backend-nestjs-webfoundpet.onrender.com"; // URL backend của bạn
+import { BASE_URL_NEST_JS } from "./config";
+const SOCKET_URL = BASE_URL_NEST_JS;
 let socket = null;
 
 // Khởi tạo socket

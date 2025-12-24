@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import toast from "react-hot-toast";
 import { FaEdit, FaKey, FaCamera, FaCog } from "react-icons/fa";
 import { getAvatarUrl } from "../../../common/functions/app.function";
+import { BASE_URL_NEST_JS } from "../../../apis/NestJS_api/config";
 
 const defaultAvatar = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
 
@@ -41,7 +42,7 @@ export default function ProfileHeader({
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `https://backend-nestjs-webfoundpet.onrender.com/api/user/upload-cloud-avatar-user?user_id=${user.user_id}`,
+        `${BASE_URL_NEST_JS}/api/user/upload-cloud-avatar-user?user_id=${user.user_id}`,
         {
           method: "POST",
 
