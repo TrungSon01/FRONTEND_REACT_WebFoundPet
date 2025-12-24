@@ -2,11 +2,11 @@ import axios from "axios";
 import { store } from "../main";
 import { hideLoading, showLoading } from "../redux/loadingSlice";
 // axios interceptor
-export const BASE_URL_DJANGO = "http://203.145.46.211:8000";
+export const BASE_URL_DJANGO = "https://django.webfoundpet.io.vn";
+
 export const https = axios.create({
   baseURL: BASE_URL_DJANGO,
 });
-
 // Add a request interceptor
 https.interceptors.request.use(
   function (config) {
