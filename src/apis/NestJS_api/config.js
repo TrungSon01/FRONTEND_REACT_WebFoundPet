@@ -1,5 +1,5 @@
 import axios from "axios";
-export const BASE_URL_NEST_JS = "http://203.145.46.211:8001";
+export const BASE_URL_NEST_JS = "https://203.145.46.211:8001";
 
 export const SOCIAL_URLs = {
   google: `${BASE_URL_NEST_JS}/api/authentication/google`,
