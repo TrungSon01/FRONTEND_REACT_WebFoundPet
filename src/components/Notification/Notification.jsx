@@ -130,7 +130,7 @@ export default function Notification({
     }
 
     ws.current = new WebSocket(
-      `ws://localhost:8000/ws/notifications/${user_id}/`
+      `wss://django.webfoundpet.io.vn/ws/notifications/${user_id}/`
     );
 
     ws.current.onopen = () => {
